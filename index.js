@@ -1,4 +1,6 @@
-const express = require("express");
+const express = require("express"),
+  morgan = require("morgan");
+
 const app = express();
 
 let topMovies = [
@@ -44,17 +46,24 @@ let topMovies = [
   }
 ];
 
+app.use(morgan("common"));
+
 // GET requests
+app.get("/movies", (req, res) => {
+  res.json(topMovies);
+});
+
 app.get("/", (req, res) => {
   res.send("Welcome to my movie club!");
 });
 
-app.get("/documentation", (req, res) => {
-  res.sendFile("public/documentation.html", { root: __dirname });
-});
+// documentation.html file from public folder
+app.use(express.static("public"));
 
-app.get("/movies", (req, res) => {
-  res.json(topMovies);
+// error-handling function
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
 });
 
 // listen for requests
