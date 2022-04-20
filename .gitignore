@@ -503,3 +503,10 @@ node_modules/vary/README.md
 node_modules/.DS_Store
 node_modules/.DS_Store
 node_modules/.DS_Store
+node_modules/lodash/_apply.js
+*.js
+*.lock
+*.nix
+node_modules/lodash/LICENSE
+*.json
+*.md
