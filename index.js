@@ -54,7 +54,7 @@ app.get("/movies", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Welcome to my movie club!");
+  res.send("Welcome to my movies club!");
 });
 
 // documentation.html file from public folder
