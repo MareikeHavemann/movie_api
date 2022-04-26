@@ -37,14 +37,6 @@ let topMovies = [
   {
     title: "Harry Potter and the Deathly Hallows – Part 2 ",
     year: "2011"
-  },
-  {
-    title: "Harry Potter and the first example",
-    year: "2022"
-  },
-  {
-    title: "Harry Potter and the second example",
-    year: "2022"
   }
 ];
 
