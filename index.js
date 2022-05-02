@@ -1,9 +1,13 @@
-const bodyParser = require("body-parser");
-  express = require("express");
-  morgan = require("morgan");
-  uuid = require('uuid');
-
+const express = require("express");
 const app = express();
+
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+ const uuid = require('uuid');
+ app.use(morgan("common"));
+
+ app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 let topMovies = [
   {
@@ -39,24 +43,33 @@ let topMovies = [
     year: "2011"
   }
 ];
+ const mongoose = require('mongoose');
+ const Models = require('./models.js');
 
-app.use(morgan("common"));
+ app.use(express.static('public'));
 
-// GET requests
-app.get("/movies", (req, res) => {
-  res.json(topMovies);
-});
+// mongoose models
+const Movies = Models.Movie;
+const Users = Models.User;
 
-app.get('/documentation', (req, res) => {                  
-  res.sendFile('public/documentation.html', { root: __dirname });
-});
+// connects to local dev MongoDB
+  mongoose.connect('mongodb://localhost:27017/myFlixDB', { 
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
 
+// endpoints for API
 app.get("/", (req, res) => {
   res.send("Welcome to my movies club!");
 });
 
 // documentation.html file from public folder
-app.use(express.static("public"));
+app.get('/documentation', (req, res) => {                  
+  res.sendFile('public/documentation.html', { root: __dirname });
+});
+
+});
+
 
 // error-handling function
 app.use((err, req, res, next) => {
