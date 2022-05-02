@@ -18,6 +18,7 @@
     <h1>URL endpoints and request methods</h1>
 
 <table>
+
   <tr>
     <th>Business Logic</th>
     <th>URL</th>
@@ -26,6 +27,7 @@
     <th>Request body data format</th>
     <th>Response body data format</th>
   </tr>
+
   <tr>
     <td>Return a list of all movies to the user</td>
     <td>/movies</td>
@@ -34,6 +36,7 @@
     <td>none</td>
     <td>A JSON object holding data about all movies</td>
   </tr>
+
    <tr>
      <td>URL endpoint is the root directory</td>
      <td>/</td>
@@ -42,6 +45,7 @@
      <td>none</td>
      <td>A text message indicating a welcome</td>
    </tr>
+
    <tr>
     <td>Return documentation</td>
     <td>/documentation</td>
@@ -49,6 +53,116 @@
     <td>none</td>
     <td>none</td>
     <td>A text message indicating the documentation</td>
+  </tr>
+
+  <tr>
+    <td>Search for a movie</td>
+    <td>"/movies/:title"</td>
+    <td>:title</td>
+    <td>GET <br>app.get("/movies/:title", (req,res)=> {
+      res.send('Successful GET request returns searched movie');});</td>
+      <td>
+        A JSON object holding data about a single movie <br />
+        Example: {Title: "", Description: ""}
+      </td>
+    <td>None</td>
+</tr>
+
+  <tr>
+    <td>Search for a genre</td>
+    <td>"'/movies/genre/:genreName"</td>
+    <td>:genreName</td>
+    <td>GET<br>app.get("'/movies/genre/:genreName", (req,res) => {
+      res.send('Successful GET request returning list of movies called by searched genre');});</td>
+      <td>
+      A JSON object holding data about a genre <br />
+      Example: Genre: { Name: ""}
+      </td> 
+      <td>None </td>
+  </tr>
+  
+  <tr>
+    <td>Search for a director by name</td>
+    <td>"/movies/director/:directorName"</td>
+    <td>:name</td>
+    <td>GET <br>app.get("/movies/directors/:name", (req,res) => {
+      res.send('Successful GET request returning data about a specific director with a bio');});</td>
+        <td>A JSON object holding data about a director <br />
+          Example: Director: { Name: "", Bio: "" }</td> 
+      <td>None </td>
+    </tr>
+  
+  <tr>
+      <td>Create new user account</td>
+      <td>"/users"</td>
+      <td>none</td>
+      <td>POST <br>app.post("/users", (req,res) => {
+      req.post('Successful POST will create a new user account');});</td>
+      <td>None</td>
+      <td>
+        A JSON object is requested  <br />
+        Example: {
+          name: String,
+          Password: String,
+          Email: String,
+          Birthday: Date
+        }
+      </td>
+    </tr>
+
+  <tr>
+      <td>Update user's info</td>
+      <td>"/users/:id"</td>
+      <td>:id</td>
+      <td>PUT <br>app.put("/users/:id", (req,res) =>{
+      req.put('Successful PUT will allow user to update their info');});</td>
+      <td> A JSON object is provided after changes  <br />
+        Example: {
+          name: String,
+          Password: String,
+          Email: String,
+          Birthday: Date
+        }</td>
+      <td>
+        A JSON object is requested holding data about User <br />
+        Example: {
+          name: String,
+          Password: String,
+          Email: String,
+          Birthday: Date
+        }
+      </td>
+    </tr>
+
+  <tr>
+      <td>Add a movie to user's list of favorite movies</td>
+      <td>"/users/:id/:movieTitle"</td>
+      <td>:id:movieTitle</td>
+      <td>POST <br>app.post("/users/:id/:movieTitle", (req,res)  =>{
+      req.put('Successful POST will add movie to user's list');});</td>
+      <td>A text message indicating that the movie has been added</td>
+      <td>None</td>
+    </tr>
+
+  <tr>
+      <td>Remove a movie from the list of favorites movies</td>
+      <td>"/users/:id/:movieTitle"</td>
+      <td>:id:movieTitle</td>
+      <td>DELETE <br>app.delete("/users/:id/:movieTitle", (req,res)  =>{
+      res.delete('Successful DELETE will DELETE a movie from user's list');});</td>
+      <td>A text message indicating that the movie has been deleted</td></td> 
+      <td>None</td>
+  </tr>
+
+  <tr>
+        <td>Delete user's account</td>
+        <td>"/users/:id"</td>
+        <td>:id</td>
+        <td>DELETE <br> app.delete("/users/:id",(req,res) =>{
+          res.delete('Successful DELETE will DELETE a user's account');});</td>
+          <td>A text message indicating that the user has been deleted</td>
+        <td>None</td>
+
   </tr>
 </table>
   </body>
