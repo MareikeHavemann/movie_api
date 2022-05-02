@@ -9,40 +9,6 @@ const bodyParser = require("body-parser");
  app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let topMovies = [
-  {
-    title: "Harry Potter and the Sorcerer's Stone",
-    year: "2001"
-  },
-  {
-    title: "Harry Potter and the Chamber of Secrets",
-    year: "2002"
-  },
-  {
-    title: "Harry Potter and the Prisoner of Azkaban ",
-    year: "2004"
-  },
-  {
-    title: "Harry Potter and the Goblet of Fire",
-    year: "2005"
-  },
-  {
-    title: "Harry Potter and the Order of the Phoenix ",
-    year: "2007"
-  },
-  {
-    title: "3.6	Harry Potter and the Half-Blood Prince",
-    year: "2009"
-  },
-  {
-    title: "Harry Potter and the Deathly Hallows – Part 1",
-    year: "2010"
-  },
-  {
-    title: "Harry Potter and the Deathly Hallows – Part 2 ",
-    year: "2011"
-  }
-];
  const mongoose = require('mongoose');
  const Models = require('./models.js');
 
