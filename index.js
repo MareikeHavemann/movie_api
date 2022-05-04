@@ -7,24 +7,24 @@ const bodyParser = require("body-parser");
  app.use(morgan("common"));
 
  app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+ app.use(bodyParser.urlencoded({ extended: true }));
 
  const mongoose = require('mongoose');
  const Models = require('./models.js');
 
  app.use(express.static('public'));
 
-// mongoose models
+// Mongoose models
 const Movies = Models.Movie;
 const Users = Models.User;
 
-// connects to local dev MongoDB
+// Connects to local dev MongoDB
   mongoose.connect('mongodb://localhost:27017/myFlixDB', { 
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
 
-// endpoints for API
+// Endpoints for API
 app.get("/", (req, res) => {
   res.send("Welcome to my movies club!");
 });
@@ -100,7 +100,7 @@ app.get(
   }
 );
 
-// movies by title
+// Get movies by title
 app.get(
   '/movies/:title',
   (req, res) => {
@@ -108,13 +108,13 @@ app.get(
       if (movie) {
         res.status(200).json(movie);
       } else {
-        res.status(400).send('Movie not Found');
+        res.status(400).send('Movie not found');
       }
     });
   }
 );
 
-// movies by genre
+// Get movies by genre
 app.get(
   '/movies/genre/:title',
   (req, res) => {
@@ -122,13 +122,13 @@ app.get(
       if (movie) {
         res.status(200).send(`${req.params.title} is a ${movie.Genre.Name}`);
       } else {
-        res.status(400).send('Movie not Found');
+        res.status(400).send('Movie not found');
       }
     });
   }
 );
 
-// Infos about director
+// Get infos about director
 app.get(
   '/directors/:name',
   (req, res) => {
@@ -136,7 +136,7 @@ app.get(
       if (movie) {
         res.status(200).json(movie.Director);
       } else {
-        res.status(400).send('Director Not Found');
+        res.status(400).send('Director not found');
       }
     });
   }
