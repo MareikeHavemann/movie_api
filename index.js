@@ -1,28 +1,27 @@
-const express = require("express");
+// imported modules/packages
+const express = require('express'),
+    morgan = require('morgan'),
+    mongoose = require('mongoose'),
+    Models = require('./models.js'),
+    bodyParser = require('body-parser');
+
 const app = express();
 
-const morgan = require("morgan");
-const bodyParser = require("body-parser");
- const uuid = require('uuid');
- app.use(morgan("common"));
-
- app.use(bodyParser.json());
- app.use(bodyParser.urlencoded({ extended: true }));
-
- const mongoose = require('mongoose');
- const Models = require('./models.js');
-
- app.use(express.static('public'));
-
-// Mongoose models
+//import models for user and movie schema
 const Movies = Models.Movie;
 const Users = Models.User;
 
-// Connects to local dev MongoDB
-  mongoose.connect('mongodb://localhost:27017/myFlixDB', { 
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
+// middleware functions used
+app.use(morgan('common')); //logger for console
+app.use(express.static('public')); //serving static files
+app.use(bodyParser.json()); //parsing headerbody
+app.use(bodyParser.urlencoded({ extended: true})); //parsing headerbody
+
+let auth = require('./auth')(app); // imports auth.js file
+const passport = require('passport'); // imports passport module
+require('./passport'); //imports passport.js file
+
+mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true }); //connect to local test database
 
 // Endpoints for API
 app.get("/", (req, res) => {
@@ -30,7 +29,7 @@ app.get("/", (req, res) => {
 });
 
 // documentation.html file from public folder
-app.get('/documentation', (req, res) => {                  
+app.get('/documentation', (req, res) => {                 
   res.sendFile('public/documentation.html', { root: __dirname });
 });
 
