@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // imported modules/packages
 const express = require('express'),
     morgan = require('morgan'),
