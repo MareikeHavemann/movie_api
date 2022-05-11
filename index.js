@@ -5,7 +5,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     Models = require('./models.js'),
     bodyParser = require('body-parser');
-
+const { check, validationResult } = require('express-validator');
 const app = express();
 
 //import models for user and movie schema
