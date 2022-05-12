@@ -8,15 +8,15 @@ const express = require('express'),
 const { check, validationResult } = require('express-validator');
 const app = express();
 
-//import models for user and movie schema
+// import models for user and movie schema
 const Movies = Models.Movie;
 const Users = Models.User;
 
 // middleware functions used
-app.use(morgan('common')); //logger for console
-app.use(express.static('public')); //serving static files
-app.use(bodyParser.json()); //parsing headerbody
-app.use(bodyParser.urlencoded({ extended: true})); //parsing headerbody
+app.use(morgan('common')); // logger for console
+app.use(express.static('public')); // serving static files
+app.use(bodyParser.json()); // parsing headerbody
+app.use(bodyParser.urlencoded({ extended: true})); // parsing headerbody
 
 const cors = require('cors');
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
