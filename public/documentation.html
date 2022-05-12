@@ -15,7 +15,10 @@
       able to sign up, update their personal information, and create a list of
       their favorite movies.
     </p>
-    <h1>URL endpoints and request methods</h1>
+
+    <br>
+    
+    <h2>URL endpoints and request methods</h2>
 
 <table>
 
@@ -58,10 +61,10 @@
   <tr>
     <td>Search for a movie</td>
     <td>"/movies/:title"</td>
-    <td>:title</td>
-    <td>GET <br>app.get("/movies/:title", (req,res)=> {
+    <td>GET</td>
+    <td>app.get("/movies/:title", (req,res)=> {
       res.send('Successful GET request returns searched movie');});</td>
-      <td>
+    <td>
         A JSON object holding data about a single movie <br />
         Example: {Title: "", Description: ""}
       </td>
@@ -71,10 +74,10 @@
   <tr>
     <td>Search for a genre</td>
     <td>"'/movies/genre/:genreName"</td>
-    <td>:genreName</td>
-    <td>GET<br>app.get("'/movies/genre/:genreName", (req,res) => {
+    <td>GET</td>
+    <td>app.get("'/movies/genre/:genreName", (req,res) => {
       res.send('Successful GET request returning list of movies called by searched genre');});</td>
-      <td>
+    <td>
       A JSON object holding data about a genre <br />
       Example: Genre: { Name: ""}
       </td> 
@@ -84,8 +87,8 @@
   <tr>
     <td>Search for a director by name</td>
     <td>"/movies/director/:directorName"</td>
-    <td>:name</td>
-    <td>GET <br>app.get("/movies/directors/:name", (req,res) => {
+    <td>GET</td>
+    <td>app.get("/movies/directors/:name", (req,res) => {
       res.send('Successful GET request returning data about a specific director with a bio');});</td>
         <td>A JSON object holding data about a director <br />
           Example: Director: { Name: "", Bio: "" }</td> 
@@ -95,8 +98,8 @@
   <tr>
       <td>Create new user account</td>
       <td>"/users"</td>
-      <td>none</td>
-      <td>POST <br>app.post("/users", (req,res) => {
+      <td>POST</td>
+      <td>app.post("/users", (req,res) => {
       req.post('Successful POST will create a new user account');});</td>
       <td>None</td>
       <td>
@@ -113,10 +116,10 @@
   <tr>
       <td>Update user's info</td>
       <td>"/users/:id"</td>
-      <td>:id</td>
-      <td>PUT <br>app.put("/users/:id", (req,res) =>{
+      <td>PUT</td>
+      <td>app.put("/users/:id", (req,res) =>{
       req.put('Successful PUT will allow user to update their info');});</td>
-      <td> A JSON object is provided after changes  <br />
+      <td> A JSON object is provided after changes <br/>
         Example: {
           name: String,
           Password: String,
@@ -137,8 +140,8 @@
   <tr>
       <td>Add a movie to user's list of favorite movies</td>
       <td>"/users/:id/:movieTitle"</td>
-      <td>:id:movieTitle</td>
-      <td>POST <br>app.post("/users/:id/:movieTitle", (req,res)  =>{
+      <td>POST</td>
+      <td>app.post("/users/:id/:movieTitle", (req,res)  =>{
       req.put('Successful POST will add movie to user's list');});</td>
       <td>A text message indicating that the movie has been added</td>
       <td>None</td>
@@ -147,8 +150,8 @@
   <tr>
       <td>Remove a movie from the list of favorites movies</td>
       <td>"/users/:id/:movieTitle"</td>
-      <td>:id:movieTitle</td>
-      <td>DELETE <br>app.delete("/users/:id/:movieTitle", (req,res)  =>{
+      <td>DELETE</td>
+      <td>app.delete("/users/:id/:movieTitle", (req,res)  =>{
       res.delete('Successful DELETE will DELETE a movie from user's list');});</td>
       <td>A text message indicating that the movie has been deleted</td></td> 
       <td>None</td>
@@ -157,8 +160,8 @@
   <tr>
         <td>Delete user's account</td>
         <td>"/users/:id"</td>
-        <td>:id</td>
-        <td>DELETE <br> app.delete("/users/:id",(req,res) =>{
+        <td>DELETE</td>
+        <td>app.delete("/users/:id",(req,res) =>{
           res.delete('Successful DELETE will DELETE a user's account');});</td>
           <td>A text message indicating that the user has been deleted</td>
         <td>None</td>
